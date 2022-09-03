@@ -8,6 +8,19 @@
   --pink: #F94C66 !important;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+/* Logo */
+a.navbar-brand {
+  font-family: 'Pacifico', cursive;
+}
+
 nav.navbar .container-fluid {
   background-color: var(--blue);
 }
