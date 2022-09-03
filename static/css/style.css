@@ -3,6 +3,15 @@
   margin: 0;
 }
 
+:root {
+  --blue: #2eb5ea !important;
+  --green: #46c940 !important;
+}
+
+nav.navbar .container-fluid {
+  background-color: var(--blue);
+}
+
 .section {
   margin-top: 5%;
 }
@@ -11,8 +20,14 @@ a {
   text-decoration: none;
 }
 
+/* Icon */
 span.material-symbols-outlined {
   vertical-align: middle;
+}
+
+/* Study Session Card */
+div.card-container {
+    padding: .5rem;
 }
 
 /* Session Form */
@@ -31,3 +46,8 @@ span.material-symbols-outlined {
 .form-button {
   text-align: center;
 }
+
+/*button.btn {
+background-color: var(--green);
+border: none;
+}*/

@@ -55,31 +55,31 @@
       <h3 class="section">Study Sessions</h3>
       <!-- Session Information -->
       <div class="session-info">
-
-<!--        If there is no study session on db-->
+        <!--        If there is no study session on db-->
         {%if study_session_list == []: %}
         <h6>There is no study session.</h6>
         {% endif %}
         <!-- Card Row -->
         <div class="row">
           {% for study_session in study_session_list: %}
-          <div class="col-3 card">
-            <div class="card-body">
-              <h5 class="card-title">{{study_session['subject']}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                {{study_session['date_time']}}
-              </h6>
-              <p class="card-text">
-                {{study_session['description']}}
-              </p>
-              <a href="#" class="card-link"
-                ><span class="material-symbols-outlined"> location_on </span>
-                {{study_session['location']}}</a
-              >
-              <a href="#" class="card-link"
-                ><span class="material-symbols-outlined"> person_add </span>
-                Join</a
-              >
+          <div class="card-container col-lg-3 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{study_session['subject']}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  {{study_session['date']}} {{study_session['start_time']}} -
+                  {{study_session['end_time']}}
+                </h6>
+                <p class="card-text">{{study_session['description']}}</p>
+                <a href="#" class="card-link"
+                  ><span class="material-symbols-outlined"> location_on </span>
+                  {{study_session['location']}}</a
+                >
+                <a href="#" class="card-link"
+                  ><span class="material-symbols-outlined"> person_add </span>
+                  Join</a
+                >
+              </div>
             </div>
           </div>
           {% endfor %}

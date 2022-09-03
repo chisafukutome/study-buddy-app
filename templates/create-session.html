@@ -52,12 +52,14 @@
 
     <!-- Session Form -->
     <div class="section session-form">
-      <form class="container" action="{{url_for('add_study_session') }}" method="post">
+      <form
+        class="container"
+        action="{{url_for('add_study_session') }}"
+        method="post"
+      >
         <h3 class="form-title">Study Session Form</h3>
         <div class="mb-3">
-          <label for="subjectInput" class="form-label"
-            >Subject</label
-          >
+          <label for="subjectInput" class="form-label">Subject</label>
           <input
             type="text"
             class="form-control"
@@ -66,16 +68,40 @@
             name="subject"
           />
         </div>
-        <div class="mb-3">
-          <label for="dateTimeInput" class="form-label"
-            >Date & Time</label
-          >
-          <input type="datetime-local" class="form-control" name="date_time" id="dateTimeInput" />
+
+        <div class="row">
+          <div class="col">
+            <label for="dateInput" class="form-label">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              name="session_date"
+              id="dateInput"
+            />
+          </div>
+          <div class="col">
+            <label for="startTimeInput" class="form-label">Start Time</label>
+            <input
+              type="time"
+              class="form-control"
+              name="start_time"
+              id="startTimeInput"
+            />
+          </div>
+          <div class="col">
+            <label for="endTimeInput" class="form-label">End Time</label>
+            <input
+              type="time"
+              class="form-control"
+              name="end_time"
+              id="endTimeInput"
+            />
+          </div>
         </div>
         <div class="mb-3">
           <label for="locationInput" class="form-label">Location</label>
           <input
-                  name="location"
+            name="location"
             type="text"
             placeholder="Building 2-112"
             class="form-control"

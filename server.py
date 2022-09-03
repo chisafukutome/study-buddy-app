@@ -12,9 +12,11 @@ db = SQLAlchemy(app)
 # --Study Session
 class Study_Session(db.Model):
     # TODO: add who created
-    id=db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(250), nullable=False)
-    date_time = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    start_time = db.Column(db.String, nullable=False)
+    end_time = db.Column(db.String, nullable=False)
     location = db.Column(db.String(300), nullable=False)
     description = db.Column(db.String(500), nullable=True)
 
@@ -23,7 +25,6 @@ class User(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String(50), nullable=False)
 
-# TODO: END TIME INPUT AND DB
 db.create_all()
 
 def read_study_session():
@@ -41,10 +42,11 @@ def create_study_session():
 
 @app.route("/add_study_session", methods=['POST'])
 def add_study_session():
-    print(type(request.form['date_time']), request.form['date_time'])
     new_study_session = Study_Session(
         subject = request.form['subject'],
-        date_time = datetime.strptime(request.form['date_time'], "%Y-%m-%dT%H:%M"),
+        date = datetime.strptime(request.form['session_date'], "%Y-%m-%d"),
+        start_time = request.form['start_time'],
+        end_time=request.form['end_time'],
         location = request.form['location'],
         description = request.form['description']
     )
