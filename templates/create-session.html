@@ -52,43 +52,45 @@
 
     <!-- Session Form -->
     <div class="section session-form">
-      <form class="container">
+      <form class="container" action="{{url_for('add_study_session') }}" method="post">
         <h3 class="form-title">Study Session Form</h3>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Class Subject</label
+          <label for="subjectInput" class="form-label"
+            >Subject</label
           >
           <input
             type="text"
             class="form-control"
-            id="exampleInputEmail1"
+            id="subjectInput"
             placeholder="e.g. Mathematics"
-            aria-describedby="emailHelp"
+            name="subject"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
+          <label for="dateTimeInput" class="form-label"
             >Date & Time</label
           >
-          <input type="datetime-local" class="form-control" id="exampleInputPassword1" />
+          <input type="datetime-local" class="form-control" name="date_time" id="dateTimeInput" />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Location</label>
+          <label for="locationInput" class="form-label">Location</label>
           <input
+                  name="location"
             type="text"
             placeholder="Building 2-112"
             class="form-control"
-            id="exampleInputPassword1"
+            id="locationInput"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
+          <label for="descriptionTextArea" class="form-label"
             >Description</label
           >
           <textarea
             class="form-control"
+            name="description"
             placeholder="Describe the study session, rules etc. "
-            id="exampleFormControlTextarea1"
+            id="descriptionTextArea"
             rows="3"
           ></textarea>
         </div>

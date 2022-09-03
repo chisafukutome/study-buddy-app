@@ -42,7 +42,7 @@
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
             <a class="nav-link" href="#">Join Study Session</a>
-            <a class="nav-link" href="create-session.html"
+            <a class="nav-link" href="{{url_for('create_study_session')}}"
               >Create Study Session</a
             >
           </div>
@@ -55,21 +55,26 @@
       <h3 class="section">Study Sessions</h3>
       <!-- Session Information -->
       <div class="session-info">
+
+<!--        If there is no study session on db-->
+        {%if study_session_list == []: %}
+        <h6>There is no study session.</h6>
+        {% endif %}
         <!-- Card Row -->
         <div class="row">
+          {% for study_session in study_session_list: %}
           <div class="col-3 card">
             <div class="card-body">
-              <h5 class="card-title">Class Subject</h5>
+              <h5 class="card-title">{{study_session['subject']}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
-                Date and time of Study Session
+                {{study_session['date_time']}}
               </h6>
               <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {{study_session['description']}}
               </p>
               <a href="#" class="card-link"
                 ><span class="material-symbols-outlined"> location_on </span>
-                Location</a
+                {{study_session['location']}}</a
               >
               <a href="#" class="card-link"
                 ><span class="material-symbols-outlined"> person_add </span>
@@ -77,51 +82,7 @@
               >
             </div>
           </div>
-
-          <div class="col-3 card">
-            <div class="card-body">
-              <h5 class="card-title">Class Subject</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                Date and time of Study Session
-              </h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Study Location</a>
-              <a href="#" class="card-link">Join This Session</a>
-            </div>
-          </div>
-
-          <div class="col-3 card">
-            <div class="card-body">
-              <h5 class="card-title">Class Subject</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                Date and time of Study Session
-              </h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Study Location</a>
-              <a href="#" class="card-link">Join This Session</a>
-            </div>
-          </div>
-
-          <div class="col-3 card">
-            <div class="card-body">
-              <h5 class="card-title">Class Subject</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                Date and time of Study Session
-              </h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Study Location</a>
-              <a href="#" class="card-link">Join This Session</a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <!-- End Card Row -->
       </div>
