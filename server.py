@@ -18,6 +18,12 @@ class Study_Session(db.Model):
     location = db.Column(db.String(300), nullable=False)
     description = db.Column(db.String(500), nullable=True)
 
+# --User
+class User(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String(50), nullable=False)
+
+# TODO: END TIME INPUT AND DB
 db.create_all()
 
 def read_study_session():
