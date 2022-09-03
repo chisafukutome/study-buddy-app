@@ -1,8 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_session import Session
+
+
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 # Database
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///study-buddy-app.db"
@@ -27,8 +33,23 @@ class User(db.Model):
 
 db.create_all()
 
+
+
+
+
 def read_study_session():
     return db.session.query(Study_Session).all()
+
+
+@app.route("/")
+def main():
+    if not session.get("StudySessionID"):
+        
+        return render_template("main.html")
+    else:
+        return redirect(url_for('home'))
+    
+
 
 @app.route("/")
 def home():
@@ -38,7 +59,10 @@ def home():
 
 @app.route("/create_study_session")
 def create_study_session():
-    return render_template("create-session.html")
+    if not session.get("StudySessionID"):
+        return redirect(url_for('home'))
+    else:
+        return render_template("create-session.html")
 
 @app.route("/add_study_session", methods=['POST'])
 def add_study_session():
@@ -54,6 +78,24 @@ def add_study_session():
     db.session.commit()
     return redirect(url_for('home'))
 
+#######################
+#### Session Management
+#######################
+@app.route("/logout")
+def logout():
+    session["name"] = None
+    return redirect("/")
+
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == "POST":
+        session["StudySessionID"] = request.form.get("StudySessionID")
+
+        #TODO: Check if it is a valid username or not
+        return redirect(url_for('home'))
+    return render_template("login.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
