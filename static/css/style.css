@@ -5,7 +5,7 @@
 
 :root {
   --blue: #2eb5ea !important;
-  --green: #46c940 !important;
+  --pink: #F94C66 !important;
 }
 
 nav.navbar .container-fluid {
@@ -47,7 +47,16 @@ div.card-container {
   text-align: center;
 }
 
-/*button.btn {
-background-color: var(--green);
-border: none;
-}*/
+.form-button button {
+  background-color: var(--pink);
+  border: none;
+}
+
+/* Log In */
+.login-form form {
+  width: 30%;
+}
+
+.section.login-form {
+  margin-top: 12%;
+}
