@@ -41,6 +41,11 @@ def read_study_session():
 
 
 @app.route("/")
+def welcome():
+    return render_template("home.html")
+
+
+@app.route("/main")
 def main():
     print('running this one')
     if not session.get("username"):
@@ -50,20 +55,18 @@ def main():
         return redirect(url_for('home'))
     
 
-@app.route("/main")
+@app.route("/home")
 def home():
     # read study sessions from db
     if not session.get('username'):
         return redirect(url_for('main'))
     print("rendering home")
+    username = session['username']
     study_sesison_list = read_study_session()
-    return render_template("index.html", study_session_list=study_sesison_list)
+    return render_template("index.html", study_session_list=study_sesison_list, username=username)
 
 @app.route("/create_study_session")
 def create_study_session():
-    if not session.get("StudySessionID"):
-        return redirect(url_for('home'))
-    else:
         return render_template("create-session.html")
 
 @app.route("/add_study_session", methods=['POST'])

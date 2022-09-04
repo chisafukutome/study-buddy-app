@@ -43,9 +43,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Join Study Sessionn</a>
-            <a class="nav-link" href="#">Create Study Session</a>
+            <a class="nav-link" href="{{url_for('main')}}">Log In</a>
+            <a class="nav-link" href="#">Sign In</a>
           </div>
         </div>
       </div>
@@ -53,55 +52,15 @@
     <!-- End Navbar -->
 
     <!-- Session Form -->
-    <div class="section login-form">
-      <form
-        class="container"
-        action="{{url_for('add_study_session') }}"
-        method="post"
-      >
-        <h3 class="form-title">Welcome to <font class="logo">Study Buddy</font> <span class="material-symbols-outlined"> draw </span>About Us:</a
+    <div class="section container" style="width: 50%;">
+        <h3 style="text-align: center; margin-bottom: 3%;">Welcome to <font class="logo">Study Buddy</font> <span class="material-symbols-outlined"> draw </span>About Us:</a
             ></h3> 
-        <p>Study Buddy is the optimal place where students can find new friends to study with.
+        <p style="line-height: 2;">Study Buddy is the optimal place where students can find new friends to study with.
            If you are taking a subject and cannot seem to find a study partner, don't worry, we have your back!
            We match students we offer two ways to meet up with students. The first is where you join a study session that
            is already made with an existing time and date. The second way is to create your own session to meet your needs. 
            Meet, study, and succeed with Study Buddy.  
         </p>
-        <div class="mb-3">
-          <label for="usernameInput" class="form-label">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="usernameInput"
-            placeholder="username"
-            name="username"
-            />
-        </div>
-        <h3 class="form-title"></h3>
-      <div class="mb-3">
-        <label for="usernameInput" class="form-label">Phone Number</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="usernameInput"
-          placeholder="(xxx-xxx-xxxx)"
-          name="username"
-        />
-        </div>
-        <div class="mb-3">
-          <label for="passwordInput" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="passwordInput"
-            placeholder="password"
-            name="password"
-          />
-        </div>
-        <div class="form-button">
-          <button type="submit" class="btn btn-primary">Log In</button>
-        </div>
-      </form>
     </div>
     <!-- End Session Form -->
 

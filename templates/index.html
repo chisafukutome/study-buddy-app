@@ -44,8 +44,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Join Study Session</a>
+                        <a class="nav-link disabled" href="{{url_for('home')}}">Join Study Session</a>
             <a class="nav-link" href="{{url_for('create_study_session')}}"
               >Create Study Session</a
             >
@@ -56,6 +55,7 @@
     <!-- End Navbar -->
 
     <main class="container">
+      <h1 style="text-align: center; margin-top: 5%;">Hi! {{username}}</h1>
       <h3 class="section">Study Sessions</h3>
       <!-- Session Information -->
       <div class="session-info">
