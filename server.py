@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
 from flask_session import Session
-
-
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -43,17 +42,20 @@ def read_study_session():
 
 @app.route("/")
 def main():
-    if not session.get("StudySessionID"):
+    print('running this one')
+    if not session.get("username"):
         
         return render_template("main.html")
     else:
         return redirect(url_for('home'))
     
 
-
-@app.route("/")
+@app.route("/main")
 def home():
     # read study sessions from db
+    if not session.get('username'):
+        return redirect(url_for('main'))
+    print("rendering home")
     study_sesison_list = read_study_session()
     return render_template("index.html", study_session_list=study_sesison_list)
 
@@ -66,6 +68,9 @@ def create_study_session():
 
 @app.route("/add_study_session", methods=['POST'])
 def add_study_session():
+    print('username:', session['username'])
+    # logout -> delete username from dictionary (new route with logout)
+
     new_study_session = Study_Session(
         subject = request.form['subject'],
         date = datetime.strptime(request.form['session_date'], "%Y-%m-%d"),
@@ -90,11 +95,23 @@ def logout():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    print(
+    'running login'
+    )
     if request.method == "POST":
         session["StudySessionID"] = request.form.get("StudySessionID")
+        username = request.form.get('Username')
+        password = request.form.get('password')
+        data = request.form['Login']
+        session['username'] = username
 
         #TODO: Check if it is a valid username or not
+
         return redirect(url_for('home'))
+
+    print('not a post')
+    if session['username']:
+        return 'Your username is '+session['username']
     return render_template("login.html")
 
 if __name__ == '__main__':
